@@ -1,4 +1,5 @@
 import axios, { type AxiosRequestConfig, type InternalAxiosRequestConfig } from "axios";
+import { useNavigate } from "react-router-dom";
 
 const base_url = "http://localhost:8080"
 
@@ -6,6 +7,8 @@ const api = axios.create({
     baseURL: base_url,
     headers: {"Content-Type":"application/json"}
 })
+
+const navigate = useNavigate();
 
 api.interceptors.request.use((config) => {
     try {
@@ -18,5 +21,20 @@ api.interceptors.request.use((config) => {
     }
     return config;
 })
+
+// response interceptor: if 401 => remove token and reload to send user to login
+api.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    if (error?.response?.status === 401) {
+      try {
+        localStorage.removeItem("accessToken");
+      } catch {}
+
+      navigate("/login",{replace: true});
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default api;
