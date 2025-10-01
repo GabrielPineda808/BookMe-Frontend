@@ -25,7 +25,7 @@ export function userFromToken(token: string | null): UserDto | null { //extracin
   if (payload.exp && Date.now() / 1000 > payload.exp) return null;
 
   return {
-    id: payload.id ?? null,
+    id: payload.userId ?? null,
     username: payload.username ?? null,
     firstName: payload.firstName ?? null,
     lastName: payload.lastName ?? null,
