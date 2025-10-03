@@ -20,6 +20,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState<UserDto | null>(() => {
     try {
       const token = localStorage.getItem("accessssToken");
@@ -71,8 +72,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setUser(userFromToken(token));
   };
 
-  const navigate = useNavigate();
-
   const logout = () => {
     try {
       localStorage.removeItem("accessToken");
@@ -81,6 +80,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     navigate("/login", { replace: true });
   };
+
+  useEffect(() => {
+    function onLogoutEvent() {
+      // Clear any additional state, then navigate
+      logout();
+    }
+    window.addEventListener("auth:logout", onLogoutEvent);
+    return () => window.removeEventListener("auth:logout", onLogoutEvent);
+  }, [navigate, logout]);
 
   const value = useMemo(
     () => ({ user, login, logout, isAuthenticated: !!user }),
