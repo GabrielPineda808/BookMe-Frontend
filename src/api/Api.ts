@@ -1,5 +1,4 @@
 import axios, { type AxiosRequestConfig, type InternalAxiosRequestConfig } from "axios";
-import { useNavigate } from "react-router-dom";
 
 const base_url = "http://localhost:8080"
 
@@ -8,7 +7,6 @@ const api = axios.create({
     headers: {"Content-Type":"application/json"}
 })
 
-const navigate = useNavigate();
 
 api.interceptors.request.use((config) => {
     try {
@@ -31,7 +29,7 @@ api.interceptors.response.use(
         localStorage.removeItem("accessToken");
       } catch {}
 
-      navigate("/login",{replace: true});
+      window.dispatchEvent(new CustomEvent("auth:logout"));
     }
     return Promise.reject(error);
   }
