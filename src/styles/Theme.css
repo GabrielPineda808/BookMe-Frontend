@@ -1,0 +1,33 @@
+/* ==============================
+   Global Theme Variables
+   ============================== */
+:root {
+    /* Colors */
+    --primary-color: #0f1720;
+    --secondary-color: #0b1220;
+    --accent-color: #3b82f6; /* blue-500 */
+    --text-color: #e5e7eb;   /* gray-200 */
+    --text-muted: #9ca3af;   /* gray-400 */
+    --card-bg: #1f2937;      /* gray-800 */
+    --input-bg: #111827;
+    --input-border: #374151;
+    --input-placeholder: #6b7280;
+
+    /* Shadows & radius */
+    --card-radius: 0.75rem; 
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --button-radius: 0.5rem;
+    --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+    /* Fonts */
+    --font-sans: 'Inter', sans-serif;
+}
+
+/* Global body */
+body {
+    font-family: var(--font-sans);
+    color: var(--text-color);
+    background: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}

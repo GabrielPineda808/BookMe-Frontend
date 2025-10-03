@@ -1,0 +1,128 @@
+/* AuthDark.css - replace your existing file with this */
+
+/* Make sure the app root fills the viewport */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #0f1720 0%, #0b1220 100%); /* fallback for body */
+  color: #e6eef8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Root wrapper that centers the card */
+.auth-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(180deg, #0f1720 0%, #0b1220 100%);
+}
+
+/* The main card - responsive width */
+.auth-container {
+  width: 100%;
+  max-width: 980px; /* limit width on large screens */
+  display: flex;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+}
+
+/* Left: form area */
+.auth-side-left {
+  flex: 1 1 520px;
+  padding: 2rem;
+  color: #e6eef8;
+  min-width: 0; /* allow flex children to shrink properly */
+}
+
+/* Right: promo area */
+.auth-side-right {
+  width: 360px;
+  padding: 2rem;
+  border-left: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide right promo on small viewports */
+@media (max-width: 880px) {
+  .auth-container {
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .auth-side-right {
+    display: none;
+  }
+}
+
+/* Branding */
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg,#7c8a97,#4b5563);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* Inputs: square, neutral tones */
+.auth-input {
+  background: rgba(11,18,32,0.65);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #e6eef8;
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  box-shadow: none;
+}
+
+.auth-input::placeholder {
+  color: rgba(230,238,248,0.18);
+}
+
+.auth-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.06);
+  border-color: rgba(59,130,246,0.5);
+}
+
+/* Buttons: neutral primary */
+.btn-auth {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(37,99,235,0.18);
+}
+
+/* Alert / error style */
+.alert {
+  background: rgba(255, 0, 0, 0.06);
+  color: #ffd6d6;
+  border: 1px solid rgba(255,50,50,0.10);
+}
+
+/* smaller text/link adjustments */
+.text-muted {
+  color: rgba(230,238,248,0.5) !important;
+}
+
+a.text-light {
+  color: #f3f4f6 !important;
+  font-weight: 600;
+}
+
+/* Utility: prevent page from horizontally overflowing due to container width */
+body {
+  overflow-x: hidden;
+}
