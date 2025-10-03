@@ -6,12 +6,10 @@ import Login from "./pages/Login";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>} />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </AuthProvider>
   );
 }
