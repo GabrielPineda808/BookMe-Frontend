@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "./styles/AuthDark.css";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 
