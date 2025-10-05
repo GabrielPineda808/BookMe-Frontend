@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../api/Api";
 import { useAuth } from "../auth/AuthContext";
 import "../styles/AuthDark.css";
+import { type LoginResponse } from "../types/LoginResponse";
+import type { LoginUserDto } from "../types/LoginUserDto";
 
 export default function Login() {
   const { login } = useAuth();
@@ -24,8 +26,13 @@ export default function Login() {
 
     setLoading(true);
 
+    const payload: LoginUserDto = {
+      email,
+      password,
+    };
+
     try {
-      const res = await api.post("/auth/login", { email, password });
+      const res = await api.post<LoginResponse>("/auth/login", payload);
       const token = res.data?.token;
       if (!token) throw new Error("No token returned");
       login(token); // persists token and sets user
