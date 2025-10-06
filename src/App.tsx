@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import PrivateRoute from "./route/PrivateRoute";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
+import AccountVerification from "./pages/AccountVerification";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/verify" element={<AccountVerification />} />
 
         <Route
           path="/home"
