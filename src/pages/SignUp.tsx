@@ -55,9 +55,12 @@ export default function SignUp() {
     };
 
     try {
-      const resp = await api.post("/auth/signup", payload);
-      alert("Account created successfully!");
-      navigate("/verify", { replace: true });
+      const resp = await api.post<UserDto>("/auth/signup", payload);
+      console.log(resp.data);
+      navigate("/verify", {
+        replace: true,
+        state: { email: resp.data.email },
+      });
     } catch (err: any) {
       if (err.response) {
         const message =
