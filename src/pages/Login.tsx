@@ -38,7 +38,16 @@ export default function Login() {
       login(token); // persists token and sets user
       navigate("/home", { replace: true });
     } catch (err: any) {
-      setError(err?.response?.data?.message || err.message || "Login failed");
+      const message =
+        err?.response?.data?.message || err.message || "Login failed";
+      if (message === "Account Not Verified") {
+        navigate("/verify", {
+          replace: true,
+          state: { email: payload.email },
+        });
+        return;
+      }
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -121,7 +130,7 @@ export default function Login() {
                   Remember me
                 </label>
               </div>
-              <Link to="#" className="small text-muted">
+              <Link to="/forgot-password" className="small text-muted">
                 Forgot?
               </Link>
             </div>
