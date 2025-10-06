@@ -13,11 +13,11 @@ export default function AccountVerification() {
   const [timer, setTimer] = useState(0);
   const [message, setMessage] = useState("");
 
-  //   useEffect(() => {
-  //     if (!email) {
-  //       navigate("/signup");
-  //     }
-  //   }, [email, navigate]);
+  useEffect(() => {
+    if (!email) {
+      navigate("/signup");
+    }
+  }, [email, navigate]);
 
   const handleResend = async () => {
     if (!email) return;
