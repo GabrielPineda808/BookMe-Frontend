@@ -87,6 +87,10 @@ export default function AccountVerification() {
           <div>
             <h4 className="mb-0">Verify your account</h4>
             <br />
+            <h5 className="mb-0">A 6-digit code has been sent to {email} .</h5>
+            <br />
+            <h6 className="mb-0">Please enter this code below.</h6>
+            <br />
           </div>
 
           <form onSubmit={handleSubmit} noValidate>
