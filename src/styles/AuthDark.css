@@ -16,6 +16,7 @@ html, body, #root {
 /* Root wrapper that centers the card */
 .auth-root {
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,8 +36,26 @@ html, body, #root {
   box-shadow: 0 8px 30px rgba(2,6,23,0.6);
 }
 
+.verify-container {
+  width: 100%;
+  max-width: 980px; /* limit width on large screens */
+  display: flex;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+}
+
 /* Left: form area */
 .auth-side-left {
+  flex: 1 1 520px;
+  padding: 2rem;
+  color: #e6eef8;
+  min-width: 0; /* allow flex children to shrink properly */
+}
+
+.verify-code-box {
   flex: 1 1 520px;
   padding: 2rem;
   color: #e6eef8;
@@ -96,13 +115,12 @@ html, body, #root {
 
 /* Buttons: neutral primary */
 .btn-auth {
-  background: linear-gradient(180deg, #3b82f6, #2563eb);
   border: none;
   border-radius: 10px;
   padding: 0.6rem 1rem;
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 8px 24px rgba(37,99,235,0.18);
+  box-shadow: 0 8px 24px rgba(60, 66, 79, 0.18);
 }
 
 /* Alert / error style */

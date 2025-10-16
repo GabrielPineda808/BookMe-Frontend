@@ -44,7 +44,7 @@ export default function ForgotPassword() {
             <br />
           </div>
 
-          {message && <p className="text-muted mt-2">{message}</p>}
+          {message && <p className="alert-success mt-2">{message}</p>}
 
           <form onSubmit={handleSubmit} noValidate>
             {error && (

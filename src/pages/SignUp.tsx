@@ -104,7 +104,7 @@ export default function SignUp() {
               <div className="col-12 col-md-6">
                 <label
                   htmlFor="firstName"
-                  className="form-label text-muted small"
+                  className="form-label text-muted small px-1 "
                 >
                   First Name
                 </label>
@@ -123,7 +123,7 @@ export default function SignUp() {
               <div className="col-12 col-md-6">
                 <label
                   htmlFor="lastName"
-                  className="form-label text-muted small"
+                  className="form-label text-muted small px-1"
                 >
                   Last Name
                 </label>
@@ -141,7 +141,10 @@ export default function SignUp() {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="email" className="form-label text-muted small">
+              <label
+                htmlFor="email"
+                className="form-label text-muted small px-1"
+              >
                 Email
               </label>
               <input
@@ -200,7 +203,7 @@ export default function SignUp() {
               <div className="col-12 col-md-6">
                 <label
                   htmlFor="password"
-                  className="form-label text-muted small d-flex justify-content-between"
+                  className="form-label text-muted small d-flex justify-content-between px-1"
                 >
                   <span>Password</span>
                   <button
@@ -227,9 +230,9 @@ export default function SignUp() {
               <div className="col-12 col-md-6">
                 <label
                   htmlFor="confirmPassword"
-                  className="form-label text-muted small d-flex justify-content-between"
+                  className="form-label text-muted small d-flex justify-content-between px-1"
                 >
-                  <span>Confirm Password</span>
+                  <span style={{ display: "flex" }}>Confirm Password</span>
                   <button
                     type="button"
                     className="btn btn-link btn-sm p-0 text-muted"
@@ -261,7 +264,7 @@ export default function SignUp() {
 
             <button
               type="submit"
-              className="btn btn-primary btn-block btn-auth"
+              className="btn btn-dark btn-block btn-auth"
               disabled={loading || !passwordsMatch}
               aria-busy={loading}
             >

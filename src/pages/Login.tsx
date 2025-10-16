@@ -48,6 +48,7 @@ export default function Login() {
           });
           return;
         }
+        setError(err);
       }
       setError(err);
     } finally {
@@ -76,7 +77,10 @@ export default function Login() {
             )}
 
             <div className="mb-3">
-              <label htmlFor="email" className="form-label text-muted small">
+              <label
+                htmlFor="email"
+                className="form-label text-muted small px-1"
+              >
                 Email
               </label>
               <input
@@ -94,7 +98,7 @@ export default function Login() {
             <div className="mb-3">
               <label
                 htmlFor="password"
-                className="form-label text-muted small d-flex justify-content-between"
+                className="form-label text-muted small d-flex justify-content-between px-1"
               >
                 <span>Password</span>
                 <button
@@ -132,13 +136,13 @@ export default function Login() {
                   Remember me
                 </label>
               </div>
-              <Link to="/forgot-password" className="small text-muted">
+              <Link to="/forgot-password" className="small text-muted px-1">
                 Forgot Password?
               </Link>
             </div>
             <button
               type="submit"
-              className="btn btn-primary btn-block btn-auth"
+              className="btn btn-dark btn-block btn-auth"
               disabled={loading}
               aria-busy={loading}
             >
