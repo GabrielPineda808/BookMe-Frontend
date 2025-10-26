@@ -1,57 +1,43 @@
+import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
+import api from "../api/Api";
 
 export default function Home() {
   const { user, logout } = useAuth();
-  return (
-    <main
-      style={{ padding: 24, maxWidth: 900, margin: "0 auto", color: "#fff" }}
-    >
-      <header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 12,
-        }}
-      >
-        <h1 style={{ margin: 0 }}>
-          Welcome{user?.firstName ? `, ${user.firstName}` : ""}!
-        </h1>
-        <div>
-          <button
-            onClick={logout}
-            style={{
-              background: "transparent",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "#fff",
-              padding: "6px 12px",
-              borderRadius: 8,
-              cursor: "pointer",
-            }}
-          >
-            Logout
-          </button>
-        </div>
-      </header>
+  const [bookings, setBookings] = useState([]);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-      <section style={{ marginTop: 24 }}>
-        <h2 style={{ marginBottom: 8, fontSize: 16 }}>
-          Decoded user info (from JWT)
-        </h2>
-        <pre
-          style={{
-            background: "rgba(255,255,255,0.03)",
-            padding: 16,
-            borderRadius: 8,
-            overflowX: "auto",
-            color: "#e6eef8",
-            fontSize: 13,
-            lineHeight: 1.5,
-          }}
-        >
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </section>
-    </main>
+  useEffect(() => {
+    if (!user?.id) return; // wait until user is available
+
+    async function load() {
+      setLoading(true);
+      try {
+        const res = await api.get("/bookings/my-bookings");
+        setBookings(res.data ?? []);
+      } catch (err: any) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+      load();
+      return () => {};
+    }
+  }, [user?.id]);
+
+  return (
+    <div>
+      {loading && <div>Loading bookings…</div>}
+      {error && <div style={{ color: "red" }}>{error}</div>}
+      {!loading && bookings.length === 0 && <div>No bookings found</div>}
+      {bookings.map((booking: any, idx: number) => (
+        <div key={booking.id ?? idx}>
+          <h3>{booking.title ?? `Booking ${idx + 1}`}</h3>
+          <p>{JSON.stringify(booking)}</p>
+        </div>
+      ))}
+    </div>
   );
 }
