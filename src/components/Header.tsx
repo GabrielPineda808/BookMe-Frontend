@@ -117,26 +117,23 @@ export default function Header({ minimal = false }: HeaderProps) {
           >
             <NavLink
               to="/"
-              className={({ isActive }) =>
-                isActive ? "active-link" : "nav-link"
-              }
+              className="nav-link"
               style={{ color: "#cfe6ff", textDecoration: "none" }}
             >
               Home
             </NavLink>
             <NavLink
-              to="#"
-              className={({ isActive }) =>
-                isActive ? "active-link" : "nav-link"
-              }
-              style={{ color: "#9fb6cc", textDecoration: "none" }}
+              to="service/create-service"
+              className="nav-link"
+              style={{ color: "#cfe6ff", textDecoration: "none" }}
             >
-              Help
+              My Services
             </NavLink>
             {user && (
               <NavLink
                 to="#"
-                style={{ color: "#9fb6cc", textDecoration: "none" }}
+                className="nav-link"
+                style={{ color: "#cfe6ff", textDecoration: "none" }}
               >
                 My Account
               </NavLink>
@@ -179,9 +176,6 @@ export default function Header({ minimal = false }: HeaderProps) {
             </>
           ) : (
             <>
-              <span style={{ color: "#cfe6ff", marginRight: 8 }}>
-                {user.firstName ?? user.email}
-              </span>
               <button
                 onClick={logout}
                 style={{
