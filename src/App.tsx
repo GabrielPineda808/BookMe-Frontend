@@ -12,6 +12,7 @@ import AuthLayout from "./components/AuthLayout";
 import MainLayout from "./components/MainLayout";
 import NotFoundRoute from "./route/NotFoundRoute";
 import DefaultRoute from "./route/DefaultRoute";
+import CreateService from "./pages/CreateService";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Home />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/service/create-service"
+              element={
+                <PrivateRoute>
+                  <CreateService />
                 </PrivateRoute>
               }
             />
