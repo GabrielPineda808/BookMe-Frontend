@@ -23,12 +23,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<UserDto | null>(() => {
     try {
-      const token = localStorage.getItem("accessssToken");
+      const token = localStorage.getItem("accessToken");
       if (!token) return null;
       if (isTokenExpired(token)) {
         localStorage.removeItem("accessToken");
         return null;
       }
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       return userFromToken(token);
     } catch {
       return null;
